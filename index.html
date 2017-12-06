@@ -4,37 +4,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IOS Layout</title>
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="iconData.json"></script>
 </head>
-
-<!-- <script src="./js/script.js"/> -->
+<script>
+	var mydata = JSON.parse(iconData);
+</script>
 <body>
 <div id="mainContainer">
 	<div id="container">
+		<form action="javascript:void(0);" method="POST" onsubmit="app.AddIcons()"> 
+		<input type="text" id="add-icons" placeholder="Add new icon">
+		<input type="submit" value="AddIcons">
+		</form>
+		<div id="spoiler" role="aria-hidden">
+		  <form action="javascript:void(0);" method="POST" id="saveEditIcon">
+		    <input type="text" id="edit-icons">
+		    <input type="submit" value="EditIcons" /> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
+		  </form>
+		</div>
+		<p id="counter"></p>
         <div id="mainPanel" class="panel">
-        	<div class="row">
-				<div><img src="images/icons/App Store.png" width="52px" height="52px"/><span>App store</span></div>
-				<div><img src="images/icons/EasyFind.png" width="52px" height="52px"/><span>Easy Find</span></div>
-				<div><img src="images/icons/Calculator.png" width="52px" height="52px"/><span>Calculator</span></div>
-				<div><img src="images/icons/Developer.png" width="52px" height="52px"/><span>Developer</span></div>
-				<div><img src="images/icons/FaceTime.png" width="52px" height="52px"/><span>FaceTime</span></div>
-
-				<div><img src="images/icons/App Store.png" width="52px" height="52px"/><span>App store</span></div>
-				<div><img src="images/icons/EasyFind.png" width="52px" height="52px"/><span>Easy Find</span></div>
-				<div><img src="images/icons/Calculator.png" width="52px" height="52px"/><span>Calculator</span></div>
-				<div><img src="images/icons/Developer.png" width="52px" height="52px"/><span>Developer</span></div>
-				<div><img src="images/icons/FaceTime.png" width="52px" height="52px"/><span>FaceTime</span></div>
-
-				<div><img src="images/icons/App Store.png" width="52px" height="52px"/><span>App store</span></div>
-				<div><img src="images/icons/EasyFind.png" width="52px" height="52px"/><span>Easy Find</span></div>
-				<div><img src="images/icons/Calculator.png" width="52px" height="52px"/><span>Calculator</span></div>
-				<div><img src="images/icons/Developer.png" width="52px" height="52px"/><span>Developer</span></div>
-				<div><img src="images/icons/FaceTime.png" width="52px" height="52px"/><span>FaceTime</span></div>
-
-				<div><img src="images/icons/App Store.png" width="52px" height="52px"/><span>App store</span></div>
-				<div><img src="images/icons/EasyFind.png" width="52px" height="52px"/><span>Easy Find</span></div>
-				<div><img src="images/icons/Calculator.png" width="52px" height="52px"/><span>Calculator</span></div>
-				<div><img src="images/icons/Developer.png" width="52px" height="52px"/><span>Developer</span></div>
-				<div><img src="images/icons/FaceTime.png" width="52px" height="52px"/><span>FaceTime</span></div>
+        	<div  id="icons" class="row">
 			</div>
         </div>
         <div id="navigation">
@@ -55,6 +45,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/script.js"></script>
 </div>
 </body>
 </html>

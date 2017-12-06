@@ -171,3 +171,9 @@ nav ul li {
         height: 64px;
     }
 }
+input[type='submit'], button, [aria-label]{
+      cursor: pointer;
+    }
+    #spoiler{
+      display: none;
+    }
