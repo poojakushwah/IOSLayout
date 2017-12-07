@@ -5,9 +5,24 @@
   <title>IOS Layout</title>
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="iconData.json"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 </head>
 <script>
 	var mydata = JSON.parse(iconData);
+	$( init );
+ 
+	function init() {
+	  $('#icons div').draggable( {
+	    containment: "#container",
+	    stack: '#bottomPanel div',
+	    cursor: 'move',
+	    revert: true
+	  } );
+	  $('#icons div').click(function(){
+	  	$(this).toggleClass('iconAnim');
+	  });
+	}
 </script>
 <body>
 <div id="mainContainer">

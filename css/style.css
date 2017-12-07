@@ -125,6 +125,30 @@ nav ul li {
     margin: 10px;
     }
 }
+#icons div {
+  -moz-transition: transform 1s;
+  -webkit-transition: transform 1s;
+  transition: transform 1s;
+}
+
+.iconAnim {
+  transform: rotate(-180deg);
+  -webkit-animation: anim 2s infinite; /* Safari 4+ */
+  -moz-animation: anim 2s infinite; /* Fx 5+ */
+  -o-animation: anim 2s infinite; /* Opera 12+ */
+  animation: anim 2s infinite;
+}
+@keyframes anim {
+  0% {
+    transform: rotate(20deg);
+  }
+  30% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
 @media screen and (max-width: 767px) and (min-width: 568px) {
     #mainContainer {
         width: 568px;
