@@ -9,6 +9,50 @@ nav ul li {
     display: inline;
     margin: 5px;
 }
+#iconPopupPanel {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+    opacity: 0.4;
+}
+#iconPopup {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    margin: auto;
+    z-index: 10;
+    bottom: 65%;
+    background-color: whitesmoke;
+}
+#popIcon {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    vertical-align: middle;
+}
+#close {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    font-weight: bold;
+    cursor: pointer;
+    background-image: url(../images/close.jpg);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
 #mainContainer {
     width: 1024px;
     height: 768px;
@@ -48,6 +92,7 @@ nav ul li {
     font-size: 12px;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 .row img{
     text-align: center;

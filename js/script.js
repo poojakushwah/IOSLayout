@@ -1,5 +1,7 @@
 var app = new function() {
   this.icnDiv = document.getElementById('icons');
+
+  // Conditions to detect devices
   window.onresize = function(event) {
     if (window.matchMedia( "(min-width: 1024px)" ).matches) {
       //alert("ipad hor")
@@ -11,6 +13,8 @@ var app = new function() {
       //alert("iphone ver")
     }
   };
+
+  // To get all icons data
   this.icons = 
   [{"name":"Developer","link":"./images/icons/Developer.png"},
   {"name":"Calculator","link":"./images/icons/Calculator.png"},
@@ -23,11 +27,11 @@ var app = new function() {
   {"name":"Users","link":"./images/icons/Users.png"},
   {"name":"Developer","link":"./images/icons/Developer.png"},
   
-  {"name":"Downloads","link":"./images/icons/Downloads.png"},
-  {"name":"Finder","link":"./images/icons/Finder.png"}, 
-  {"name":"Doo","link":"./images/icons/Doo.png"}, 
-  {"name":"Dictionary","link":"./images/icons/Dictionary.png"}, 
-  {"name":"Contacts","link":"./images/icons/Contacts.png"}, 
+  // {"name":"Downloads","link":"./images/icons/Downloads.png"},
+  // {"name":"Finder","link":"./images/icons/Finder.png"}, 
+  // {"name":"Doo","link":"./images/icons/Doo.png"}, 
+  // {"name":"Dictionary","link":"./images/icons/Dictionary.png"}, 
+  // {"name":"Contacts","link":"./images/icons/Contacts.png"}, 
   {"name":"InDesign","link":"./images/icons/InDesign.png"},
   {"name":"Camera","link":"./images/icons/Camera.png"},
   {"name":"CloudApp","link":"./images/icons/CloudApp.png"},
@@ -35,6 +39,7 @@ var app = new function() {
   {"name":"Music","link":"./images/icons/Music.png"},
   {"name":"Passbook","link":"./images/icons/Passbook.png"}, 
   {"name":"Photoshop","link":"./images/icons/Photoshop.png"}];
+
   this.Count = function(data) {
     var el   = document.getElementById('counter');
     var name = 'icons';
@@ -53,14 +58,16 @@ var app = new function() {
     if (this.icons.length > 0) {
       for (i = 0; i < this.icons.length; i++) {
         //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-        data += '<div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
+        data += '<div onclick="app.ShowPopUP(' + i + ') "><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
         // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
         // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
       }
     }
-    this.Count(this.icons.length);
+    //this.Count(this.icons.length);
     return this.icnDiv.innerHTML = data;
   };
+
+  // To add icon from user input
   this.AddIcons = function () {
     el = document.getElementById('add-icons');
     var icn = el.value;
@@ -71,6 +78,17 @@ var app = new function() {
       this.GetData();
     }
   };
+
+  // To show icon in pop up
+  this.ShowPopUP = function(index){
+    document.getElementById('iconPopupPanel').style.display = 'block';
+    this.popDiv = document.getElementById("popIcon");
+    var popData = '';
+    popData += '<div><img src=' + this.icons[index].link + ' class="imagTag" width="52px" height="52px" />'+'<div>'+this.icons[index].name+'</span></div>';
+    return this.popDiv.innerHTML = popData;
+  };
+
+  // To Edit icon name and image link with proper path
   this.EditIcons = function (item) {
     var el = document.getElementById('edit-icons');
     el.value = this.icons[item];
@@ -85,13 +103,24 @@ var app = new function() {
       }
     }
   };
+
+  //To delete icons
   this.DeleteIcons = function (item) {
     this.icons.splice(item, 1);
     this.GetData();
   };
   
 }
+
+// To fetch data
 app.GetData();
+
+// To close Edit inputs 
 function CloseInput() {
   document.getElementById('spoiler').style.display = 'none';
+}
+
+// To close pop up of icon
+function ClosePopUP() {
+ document.getElementById('iconPopupPanel').style.display = 'none';
 }

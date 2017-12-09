@@ -11,7 +11,7 @@
 <script>
 	var mydata = JSON.parse(iconData);
 	$( init );
- 
+ 	// For drag funtionlity
 	function init() {
 	  $('#icons div').draggable( {
 	    containment: "#container",
@@ -19,16 +19,14 @@
 	    cursor: 'move',
 	    revert: true
 	  } );
-	  $('#icons div').click(function(){
-	  	$(this).toggleClass('iconAnim');
-	  });
 	}
 </script>
 <body>
 <div id="mainContainer">
 	<div id="container">
-		<form action="javascript:void(0);" method="POST" onsubmit="app.AddIcons()"> 
-		<input type="text" id="add-icons" placeholder="Add new icon">
+		<!-- <form action="javascript:void(0);" method="POST" onsubmit="app.AddIcons()"> 
+		<input type="text" id="add-iconsName" placeholder="Add Name">
+		<input type="text" id="add-iconsLink" placeholder="Add Image Link">
 		<input type="submit" value="AddIcons">
 		</form>
 		<div id="spoiler" role="aria-hidden">
@@ -36,17 +34,23 @@
 		    <input type="text" id="edit-icons">
 		    <input type="submit" value="EditIcons" /> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
 		  </form>
-		</div>
-		<p id="counter"></p>
+		</div>> -->
+		<!-- <p id="counter"></p> -->
         <div id="mainPanel" class="panel">
-        	<div  id="icons" class="row">
-			</div>
+        	<div  id="icons" class="row"></div>
+        </div>
+        <div id="iconPopupPanel">
+        	<div class="overlay"></div>
+	        <div id="iconPopup">
+        		<div id="close" onclick="ClosePopUP();"></div>
+        		<div id="popIcon"></div>
+	        </div>
         </div>
         <div id="navigation">
-				<div class="nav_row">
-					<div class="nav"></div>
-					<div class="nav"></div>
-				</div>
+			<div class="nav_row">
+				<div class="nav"></div>
+				<div class="nav"></div>
+			</div>
 		</div>
 		<div id="bottomPanel" class="panel">
 			<div id="menuItems">
