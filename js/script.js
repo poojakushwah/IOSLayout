@@ -1,6 +1,7 @@
-var app = new function() {
-  this.icnDiv = document.getElementById('icons');
+var app = new function(iconData) {
 
+  this.firstPanel = document.getElementById('firstPanel');
+  this.secondPanel = document.getElementById('secondPanel');
   // Conditions to detect devices
   window.onresize = function(event) {
     if (window.matchMedia( "(min-width: 1024px)" ).matches) {
@@ -14,32 +15,10 @@ var app = new function() {
     }
   };
 
-  // To get all icons data
-  this.icons = 
-  [{"name":"Developer","link":"./images/icons/Developer.png"},
-  {"name":"Calculator","link":"./images/icons/Calculator.png"},
-  {"name":"FaceTime","link":"./images/icons/FaceTime.png"}, 
-  {"name":"EasyFind","link":"./images/icons/EasyFind.png"}, 
-  {"name":"Calender","link":"./images/icons/Calendar.png"}, 
-  {"name":"Cobook","link":"./images/icons/Cobook.png"}, 
-  {"name":"CandyBar","link":"./images/icons/CandyBar.png"},
-  {"name":"Compass","link":"./images/icons/Compass.png"},
-  {"name":"Users","link":"./images/icons/Users.png"},
-  {"name":"Developer","link":"./images/icons/Developer.png"},
-  
-  // {"name":"Downloads","link":"./images/icons/Downloads.png"},
-  // {"name":"Finder","link":"./images/icons/Finder.png"}, 
-  // {"name":"Doo","link":"./images/icons/Doo.png"}, 
-  // {"name":"Dictionary","link":"./images/icons/Dictionary.png"}, 
-  // {"name":"Contacts","link":"./images/icons/Contacts.png"}, 
-  {"name":"InDesign","link":"./images/icons/InDesign.png"},
-  {"name":"Camera","link":"./images/icons/Camera.png"},
-  {"name":"CloudApp","link":"./images/icons/CloudApp.png"},
-  {"name":"Notes","link":"./images/icons/Notes.png"},
-  {"name":"Music","link":"./images/icons/Music.png"},
-  {"name":"Passbook","link":"./images/icons/Passbook.png"}, 
-  {"name":"Photoshop","link":"./images/icons/Photoshop.png"}];
+  // To get all data from js file
+  this.icons = icons;
 
+  // To get icons count
   this.Count = function(data) {
     var el   = document.getElementById('counter');
     var name = 'icons';
@@ -52,19 +31,28 @@ var app = new function() {
       el.innerHTML = 'No ' + name;
     }
   };
-  
+
+  // To get icon data from user input
   this.GetData = function() {
-    var data = '';
+    var firstPanelData = '';
+    var secondPanelData = '';
     if (this.icons.length > 0) {
       for (i = 0; i < this.icons.length; i++) {
-        //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-        data += '<div onclick="app.ShowPopUP(' + i + ') "><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
-        // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
-        // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
+        if(i < 20){
+          //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
+          firstPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
+          // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
+          // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
+        }else {
+           //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
+          secondPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
+          // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
+          // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
+        }
       }
     }
     //this.Count(this.icons.length);
-    return this.icnDiv.innerHTML = data;
+    return this.firstPanel.innerHTML = firstPanelData,this.secondPanel.innerHTML = secondPanelData;
   };
 
   // To add icon from user input
@@ -108,12 +96,11 @@ var app = new function() {
   this.DeleteIcons = function (item) {
     this.icons.splice(item, 1);
     this.GetData();
-  };
-  
+  }; 
 }
 
 // To fetch data
-app.GetData();
+app.GetData(iconData);
 
 // To close Edit inputs 
 function CloseInput() {
@@ -121,6 +108,20 @@ function CloseInput() {
 }
 
 // To close pop up of icon
-function ClosePopUP() {
+function ClosePopup() {
  document.getElementById('iconPopupPanel').style.display = 'none';
+}
+
+//
+function openFirstScreen() {
+  console.log("first")
+  this.firstPanel.style.display = 'block';
+  this.secondPanel.style.display = 'none';
+}
+
+//
+function openSecondScreen() {
+  console.log("second")
+  this.secondPanel.style.display = 'block';
+  this.firstPanel.style.display = 'none';
 }

@@ -72,8 +72,39 @@ nav ul li {
     overflow: hidden;
 }
 #mainPanel {
+    width: 100%;
+    height: 74%;
+    position: relative;
 }
 #bottomPanel {
+    width: 100%;
+    height: 18%;
+    position: relative;
+    background-color: #fff8f85e;
+}
+#firstPanel div {
+  -moz-transition: transform 1s;
+  -webkit-transition: transform 1s;
+  transition: transform 1s;
+}
+#firstPanel{
+   display: block;
+}
+#secondPanel{
+   display: none;
+}
+#secondPanel div {
+  -moz-transition: transform 1s;
+  -webkit-transition: transform 1s;
+  transition: transform 1s;
+}
+
+.iconAnim {
+  transform: rotate(-180deg);
+  -webkit-animation: anim 2s infinite; /* Safari 4+ */
+  -moz-animation: anim 2s infinite; /* Fx 5+ */
+  -o-animation: anim 2s infinite; /* Opera 12+ */
+  animation: anim 2s infinite;
 }
 .panel {
     position: relative;
@@ -82,7 +113,9 @@ nav ul li {
 }
 .row {
     display: inline-block;
-    margin: 20px;
+    width: 96%;
+    height: 100%;
+    margin: 20px 10px 10px 10px;
 }
 .row div {
     width: 133px;
@@ -91,8 +124,6 @@ nav ul li {
     color: #f0f0f0;
     font-size: 12px;
     text-align: center;
-    position: relative;
-    cursor: pointer;
 }
 .row img{
     text-align: center;
@@ -107,7 +138,9 @@ nav ul li {
     top: 48px;
 }
 #navigation {
-    margin: 10px 0px;
+    width: 100%;
+    height: 4%;
+    position: relative;
 }
 #menuItems{
 
@@ -123,10 +156,10 @@ nav ul li {
     margin: auto;
 }
 #navigation .nav {
-    width: 5px;
-    height:5px;
     border-radius: 5px;
     background-color: #f0f0f0;
+    padding: 5px;
+    cursor: pointer
 }
 #navigation .nav:first-child {
     float: left;
@@ -170,19 +203,7 @@ nav ul li {
     margin: 10px;
     }
 }
-#icons div {
-  -moz-transition: transform 1s;
-  -webkit-transition: transform 1s;
-  transition: transform 1s;
-}
 
-.iconAnim {
-  transform: rotate(-180deg);
-  -webkit-animation: anim 2s infinite; /* Safari 4+ */
-  -moz-animation: anim 2s infinite; /* Fx 5+ */
-  -o-animation: anim 2s infinite; /* Opera 12+ */
-  animation: anim 2s infinite;
-}
 @keyframes anim {
   0% {
     transform: rotate(20deg);

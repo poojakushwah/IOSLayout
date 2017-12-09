@@ -4,16 +4,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IOS Layout</title>
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" src="iconData.json"></script>
+  <script type="text/javascript" src="iconData.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </head>
 <script>
-	var mydata = JSON.parse(iconData);
+	var iconData = icons;
+	//var mydata = JSON.parse(iconData);
 	$( init );
  	// For drag funtionlity
 	function init() {
-	  $('#icons div').draggable( {
+	  $('.iconCont').draggable( {
 	    containment: "#container",
 	    stack: '#bottomPanel div',
 	    cursor: 'move',
@@ -36,28 +38,29 @@
 		  </form>
 		</div>> -->
 		<!-- <p id="counter"></p> -->
-        <div id="mainPanel" class="panel">
-        	<div  id="icons" class="row"></div>
+        <div id="mainPanel">
+        	<div  id="firstPanel" class="panel row"></div>
+        	<div  id="secondPanel" class="panel row"></div>
         </div>
         <div id="iconPopupPanel">
         	<div class="overlay"></div>
 	        <div id="iconPopup">
-        		<div id="close" onclick="ClosePopUP();"></div>
+        		<div id="close" onclick="ClosePopup();"></div>
         		<div id="popIcon"></div>
 	        </div>
         </div>
         <div id="navigation">
 			<div class="nav_row">
-				<div class="nav"></div>
-				<div class="nav"></div>
+				<div class="nav" onclick="openFirstScreen();"></div>
+				<div class="nav" onclick="openSecondScreen();"></div>
 			</div>
 		</div>
 		<div id="bottomPanel" class="panel">
 			<div id="menuItems">
 				<div class="row">
 				<div><img src="images/icons/App Store.png" width="52px" height="52px"/><span>App store</span></div>
-				<div><img src="images/icons/Clock.png" width="52px" height="52px"/><span>Clock</span></div>
 				<div><img src="images/icons/Calculator.png" width="52px" height="52px"/><span>Calculator</span></div>
+				<div><img src="images/icons/Developer.png" width="52px" height="52px"/><span>Developer</span></div>
 				<div><img src="images/icons/Developer.png" width="52px" height="52px"/><span>Developer</span></div>
 				<div><img src="images/icons/FaceTime.png" width="52px" height="52px"/><span>FaceTime</span></div>
 			</div>
