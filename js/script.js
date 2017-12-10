@@ -1,10 +1,13 @@
-var app = new function(iconData) {
+var app = new function(iconData,menuData) {
 
   this.firstPanel = document.getElementById('firstPanel');
   this.secondPanel = document.getElementById('secondPanel');
+  this.menuPanel = document.getElementById('menuPanel');
 
   // To get all main icons data from js file
   this.icons = icons;
+  this.menues = menus;
+  console.log(this.menues)
 
   // To get icons count
   this.Count = function(data) {
@@ -24,23 +27,29 @@ var app = new function(iconData) {
   this.GetData = function() {
     var firstPanelData = '';
     var secondPanelData = '';
+    var menuPanelData = '';
     if (this.icons.length > 0) {
       for (i = 0; i < this.icons.length; i++) {
         if(i < 20){
           //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-          firstPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+this.icons[i].name+'</span></div></div>';
+          firstPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div></div>';
           // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
           // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
         }else {
            //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-          secondPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+this.icons[i].name+'</span></div></div>';
+          secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div></div>';
           // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
           // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
         }
       }
     }
+    if(this.menues.length > 0){
+       for (i = 0; i < this.menues.length; i++) {
+        menuPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.menues[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.menues[i].name +'</span></div></div>';
+      }
+    }
     //this.Count(this.icons.length);
-    return this.firstPanel.innerHTML = firstPanelData,this.secondPanel.innerHTML = secondPanelData;
+    return this.firstPanel.innerHTML = firstPanelData,this.secondPanel.innerHTML = secondPanelData, this.menuPanel.innerHTML = menuPanelData ;
   };
 
   // To add icon from user input
@@ -60,7 +69,7 @@ var app = new function(iconData) {
     document.getElementById('iconPopupPanel').style.display = 'block';
     this.popDiv = document.getElementById("popIcon");
     var popData = '';
-    popData += '<div><img src=' + this.icons[index].link + ' class="imagTag" width="52px" height="52px" />'+'<div>'+this.icons[index].name+'</span></div>';
+    popData += '<div><img src=' + this.menues[index].link + ' class="imagTag" width="52px" height="52px" />'+'<div>'+this.menues[index].name+'</span></div>';
     return this.popDiv.innerHTML = popData;
   };
 
@@ -88,7 +97,7 @@ var app = new function(iconData) {
 }
 
 // To fetch data
-app.GetData(iconData);
+app.GetData(iconData, menuData);
 
 // To close Edit inputs 
 function CloseInput() {

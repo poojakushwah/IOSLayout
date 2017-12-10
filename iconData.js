@@ -42,3 +42,10 @@
   {"name":"Calculator","link":"./images/icons/Calculator.png"},
   {"name":"FaceTime","link":"./images/icons/FaceTime.png"}, 
   {"name":"EasyFind","link":"./images/icons/EasyFind.png"}];
+
+  var menus = 
+
+  [{"name":"FaceTime","link":"./images/icons/Phone.png"},
+  {"name":"Calculator","link":"./images/icons/Mail.png"},
+  {"name":"Safari","link":"./images/icons/Safari.png"}, 
+  {"name":"EasyFind","link":"./images/icons/Settings.png"}]
