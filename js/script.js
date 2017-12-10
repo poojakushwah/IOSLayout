@@ -2,20 +2,8 @@ var app = new function(iconData) {
 
   this.firstPanel = document.getElementById('firstPanel');
   this.secondPanel = document.getElementById('secondPanel');
-  // Conditions to detect devices
-  window.onresize = function(event) {
-    if (window.matchMedia( "(min-width: 1024px)" ).matches) {
-      //alert("ipad hor")
-    }else if (window.matchMedia( "(max-width: 1023px) and (min-width: 768px)" ).matches) {
-      //alert("ipad ver")
-    }else if (window.matchMedia( "(max-width: 767px) and (min-width: 568px)" ).matches) {
-      //alert("iphine hor")
-    }else if (window.matchMedia( "(max-width: 567px) and (min-width: 320px)" ).matches) {
-      //alert("iphone ver")
-    }
-  };
 
-  // To get all data from js file
+  // To get all main icons data from js file
   this.icons = icons;
 
   // To get icons count
@@ -40,12 +28,12 @@ var app = new function(iconData) {
       for (i = 0; i < this.icons.length; i++) {
         if(i < 20){
           //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-          firstPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
+          firstPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+this.icons[i].name+'</span></div></div>';
           // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
           // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
         }else {
            //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-          secondPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" />'+'<span>'+this.icons[i].name+'</span></div>';
+          secondPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+this.icons[i].name+'</span></div></div>';
           // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
           // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
         }
@@ -112,16 +100,23 @@ function ClosePopup() {
  document.getElementById('iconPopupPanel').style.display = 'none';
 }
 
-//
+// For first secreen
 function openFirstScreen() {
-  console.log("first")
   this.firstPanel.style.display = 'block';
   this.secondPanel.style.display = 'none';
+  document.getElementById('firstNav').style.pointerEvents = "none";
+  document.getElementById('secNav').style.pointerEvents = "auto";
+  document.getElementById('secNav').style.opacity = 0.3;
+  document.getElementById('firstNav').style.opacity = 1;
+
 }
 
-//
+// For second screen
 function openSecondScreen() {
-  console.log("second")
   this.secondPanel.style.display = 'block';
   this.firstPanel.style.display = 'none';
+  document.getElementById('secNav').style.pointerEvents = "none";
+  document.getElementById('firstNav').style.pointerEvents = "auto";
+  document.getElementById('firstNav').style.opacity = 0.3;
+  document.getElementById('secNav').style.opacity = 1;
 }

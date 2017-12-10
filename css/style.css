@@ -73,7 +73,7 @@ nav ul li {
 }
 #mainPanel {
     width: 100%;
-    height: 74%;
+    height: 78%;
     position: relative;
 }
 #bottomPanel {
@@ -93,6 +93,7 @@ nav ul li {
 #secondPanel{
    display: none;
 }
+
 #secondPanel div {
   -moz-transition: transform 1s;
   -webkit-transition: transform 1s;
@@ -113,30 +114,30 @@ nav ul li {
 }
 .row {
     display: inline-block;
-    width: 96%;
+    width: 97%;
     height: 100%;
-    margin: 20px 10px 10px 10px;
+    padding: 20px 10px 10px 10px;
 }
-.row div {
-    width: 133px;
-    height: 80px;
+.row .iconCont {
+    width: 137px;
+    height: 86px;
     float: left;
+}
+.iconCont div:first-child {
+    position: relative;
+    text-align: center;
+}
+.iconCont div img {
+    width:52px;
+    height:52px;
+}
+.iconCont div:last-child {
+    position: relative;
     color: #f0f0f0;
     font-size: 12px;
     text-align: center;
 }
-.row img{
-    text-align: center;
-    position: absolute;
-}
-.row span {
-    white-space: nowrap; 
-    position: relative;
-    text-align: center;
-    width: auto;
-    height: auto;
-    top: 48px;
-}
+
 #navigation {
     width: 100%;
     height: 4%;
@@ -146,7 +147,7 @@ nav ul li {
 
 }
 #menuItems .row{
-    margin: 13px 20px 0px 20px;
+    padding: 13px 20px 0px 20px;
 }
 .nav_row {
     width: 30px;
@@ -158,50 +159,24 @@ nav ul li {
 #navigation .nav {
     border-radius: 5px;
     background-color: #f0f0f0;
-    padding: 5px;
-    cursor: pointer
+    padding: 3px;
+    cursor: pointer;
+    width: 5px;
+    height: 5px;
+    position: absolute;
 }
 #navigation .nav:first-child {
-    float: left;
+    left: 0px;
 }
 #navigation .nav:last-child {
-    float: right;
+    right: 0px;
+    opacity: 0.3;
 }
-
-/*Media query to support ipad and iphone*/
-/*@media screen and (max-width: 1600px) and (min-width: 1024px){
-    #mainContainer {
-        width: 1024px;
-        height: 768px;
-        background-image: url(../images/ipad-mini-horizontal.png);
-        background-size: 1024px 768px;
+input[type='submit'], button, [aria-label]{
+    cursor: pointer;
     }
-}*/
-
-@media screen and (max-width: 1023px) and (min-width: 768px) {
-    #mainContainer {
-        width: 768px;
-        height: 1024px;
-        background-image: url(../images/ipad-mini-vertifical.png);
-        background-size: 768px 1024px;
-    }
-    #container{
-        width: 473px;
-        height: 708px;
-    }
-    .row div {
-        width: 113px;
-        height: 110px
-    }
-    #menuItems .row div:last-child {
-        display: none;
-    }
-    .row {
-        margin: 20px 10px 10px 10px
-    }
-    #menuItems .row {
-    margin: 10px;
-    }
+#spoiler{
+    display: none;
 }
 
 @keyframes anim {
@@ -215,6 +190,42 @@ nav ul li {
     transform: rotate(20deg);
   }
 }
+/*Media query to support ipad and iphone*/
+/*@media screen and (max-width: 1600px) and (min-width: 1024px){
+    #mainContainer {
+        width: 1024px;
+        height: 768px;
+        background-image: url(../images/ipad-mini-horizontal.png);
+        background-size: 1024px 768px;
+    }
+}*/
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    #mainContainer {
+        width: 768px;
+        height: 1024px;
+        background-image: url(../images/ipad-mini-vertifical.png);
+        background-size: 768px 1024px;
+    }
+    #container{
+        width: 473px;
+        height: 708px;
+    }
+    .row .iconCont {
+        width: 113px;
+        height: 110px
+    }
+    .iconCont div img {
+        width:62px;
+        height:62px;
+    }
+    #menuItems .row div:last-child {
+        display: none;
+    }
+    #menuItems .row {
+        margin: 10px;
+    }
+}
+
 @media screen and (max-width: 767px) and (min-width: 568px) {
     #mainContainer {
         width: 568px;
@@ -229,20 +240,59 @@ nav ul li {
         top: 58px;
         left:-1px;
     }
-    .row div {
-        width: 69px;
-        height: 64px;
+    #mainPanel {
+        width: 80%;
+        height: 95%;
+    }
+    #bottomPanel {
+        width: 16%;
+        height: 100%;
+        float: right;
+        top: -194px;
+    }
+    .row {
+        padding: 5px;
+    }
+    .row .iconCont {
+        width: 55px;
+        height: 47px;
+    }
+    .iconCont div:first-child {
+        height: 68%;
+    }
+    .iconCont div img {
+        width:32px;
+        height:32px;
+    }
+    .iconCont div:last-child {
+        font-size: 9px;
+    }
+    #iconPopup {
+        width: 155px;
+        height: 100px;
+        bottom: 73%;
+    }
+    #navigation {
+        width: 75%;
+        height: 5%;
+        float: left;
+    }
+    .nav_row {
+        width: 20px;
+        height: 8px;
+    }
+    #navigation .nav {
+        width: 2px;
+        height: 2px;
     }
     #menuItems .row div:last-child {
         display: none;
     }
-    .row {
-        margin: 10px 5px 5px 5px
-    }
     #menuItems .row {
-    margin: 10px;
+        margin: 10px;
     }
 }
+
 @media screen and (max-width: 567px) and (min-width: 320px) {
     #mainContainer {
         width: 320px;
@@ -256,14 +306,27 @@ nav ul li {
         top: 103px;
         left: 2px;
     }
-    .row div {
-        width: 54px;
-        height: 64px;
+    #iconPopup {
+        width: 155px;
+        height: 100px;
+    }
+    .nav_row {
+        width: 25px;
+    }
+    #navigation .nav {
+        padding: 4px;
+        width: 2px;
+        height: 2px;
+    }
+    .row .iconCont {
+        width: 47px;
+        height: 51px;
+    }
+    .iconCont div img {
+        width:32px;
+        height:32px;
+    }
+    .iconCont div:last-child {
+        font-size: 8px;
     }
 }
-input[type='submit'], button, [aria-label]{
-      cursor: pointer;
-    }
-    #spoiler{
-      display: none;
-    }
