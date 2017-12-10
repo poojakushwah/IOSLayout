@@ -29,18 +29,27 @@
 <body>
 <div id="mainContainer">
 	<div id="container">
-		<!-- <form action="javascript:void(0);" method="POST" onsubmit="app.AddIcons()"> 
+
+		<!--Uncomment below lines of code to test CURD operation-->
+
+		<!-- <label>Please enter image url to change background</label>
+		<input type="text" value="./images/icons/Calculator.png" id="get-background">
+	    <input type="submit" value="update-background" onclick="app.ChangeBackground()" />
+		
+		<form action="javascript:void(0);" method="POST" onsubmit="app.AddIcons()"> 
 		<input type="text" id="add-iconsName" placeholder="Add Name">
 		<input type="text" id="add-iconsLink" placeholder="Add Image Link">
 		<input type="submit" value="AddIcons">
 		</form>
-		<div id="spoiler" role="aria-hidden">
+
+		<div id="closeEdit" role="aria-hidden">
 		  <form action="javascript:void(0);" method="POST" id="saveEditIcon">
-		    <input type="text" id="edit-icons">
+		    <input type="text" id="edit-name">
+		    <input type="text" id="edit-link">
 		    <input type="submit" value="EditIcons" /> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
 		  </form>
-		</div>> -->
-		<!-- <p id="counter"></p> -->
+		</div> -->
+
         <div id="mainPanel">
         	<div  id="firstPanel" class="panel row"></div>
         	<div  id="secondPanel" class="panel row"></div>
@@ -59,7 +68,7 @@
 			</div>
 		</div>
 		<div id="bottomPanel" class="panel">
-			<div class="overlay"></div>
+			<div class="blurryBackground"></div>
 			<div id="menuPanel"></div>
 		</div>
 	</div>
@@ -67,3 +76,4 @@
 </div>
 </body>
 </html>
+

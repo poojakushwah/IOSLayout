@@ -3,25 +3,11 @@ var app = new function(iconData,menuData) {
   this.firstPanel = document.getElementById('firstPanel');
   this.secondPanel = document.getElementById('secondPanel');
   this.menuPanel = document.getElementById('menuPanel');
+  this.bakground = document.getElementById('container');
 
   // To get all main icons data from js file
   this.icons = icons;
   this.menues = menus;
-  console.log(this.menues)
-
-  // To get icons count
-  this.Count = function(data) {
-    var el   = document.getElementById('counter');
-    var name = 'icons';
-    if (data) {
-      if (data > 1) {
-        name = 'icons';
-      }
-      el.innerHTML = data + ' ' + name ;
-    } else {
-      el.innerHTML = 'No ' + name;
-    }
-  };
 
   // To get icon data from user input
   this.GetData = function() {
@@ -31,15 +17,23 @@ var app = new function(iconData,menuData) {
     if (this.icons.length > 0) {
       for (i = 0; i < this.icons.length; i++) {
         if(i < 20){
-          //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-          firstPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div></div>';
-          // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
-          // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
+            firstPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
+            firstPanelData += 'width="52px" height="52px" /></div><div><span>'+ this.icons[i].name +'</span></div>';
+          
+            // Uncomment to view Edit and Delete feature
+            // firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
+            // firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
+
+            firstPanelData += '</div>';
         }else {
-           //data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-          secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div></div>';
-          // data += '<span><button onclick="app.Edit(' + i + ')">Edit</button></span>';
-          // data += '<span><button onclick="app.Delete(' + i + ')">Delete</button></span>';
+            // data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
+            secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
+            secondPanelData += ' width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div>';
+            // Uncomment to view Edit and Delete feature
+            // secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
+            // secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
+
+            secondPanelData += '</div>';
         }
       }
     }
@@ -54,12 +48,15 @@ var app = new function(iconData,menuData) {
 
   // To add icon from user input
   this.AddIcons = function () {
-    el = document.getElementById('add-icons');
-    var icn = el.value;
-    if (icn) {
-      this.icons.push({"name":icn.trim(),link:icn.trim()});
+    elNam = document.getElementById('add-iconsName');
+    elLink = document.getElementById('add-iconsLink');
+    var icnName = elNam.value;
+    var icnLink = elLink.value;
+    if (icnName && icnLink) {
+      this.icons.push({"name":icnName.trim(),link:icnLink.trim()});
       console.log(this.icons)
-      el.value = '';
+      elNam.value = '';
+      elLink.value = '';
       this.GetData();
     }
   };
@@ -74,15 +71,19 @@ var app = new function(iconData,menuData) {
   };
 
   // To Edit icon name and image link with proper path
-  this.EditIcons = function (item) {
-    var el = document.getElementById('edit-icons');
-    el.value = this.icons[item];
-    document.getElementById('spoiler').style.display = 'block';
+  this.EditIcons = function (index) {
+    var elNam = document.getElementById('edit-name');
+    var elLink = document.getElementById('edit-link');
+    elNam.value = this.icons[index].name;
+    elLink.value = this.icons[index].link;
+    document.getElementById('closeEdit').style.display = 'block';
     self = this;
     document.getElementById('saveEditIcon').onsubmit = function() {
-      var icn = el.value;
-      if (icn) {
-        self.icons.splice(item, 1, icn.trim());
+      var nam = elNam.value;
+      var link = elLink.value;
+      if (nam && link) {
+        self.icons[index].name = nam.trim();
+        self.icons[index].link = link.trim();
         self.GetData();
         CloseInput();
       }
@@ -90,10 +91,17 @@ var app = new function(iconData,menuData) {
   };
 
   //To delete icons
-  this.DeleteIcons = function (item) {
-    this.icons.splice(item, 1);
+  this.DeleteIcons = function (index) {
+    this.icons.splice(index, 1);
     this.GetData();
-  }; 
+  };
+
+  this.ChangeBackground = function() {
+    var el = document.getElementById('get-background');
+    var elImg = el.value;
+    this.bakground.style.backgroundImage = 'url('+ elImg + ')';
+    
+  } 
 }
 
 // To fetch data
@@ -101,7 +109,7 @@ app.GetData(iconData, menuData);
 
 // To close Edit inputs 
 function CloseInput() {
-  document.getElementById('spoiler').style.display = 'none';
+  document.getElementById('closeEdit').style.display = 'none';
 }
 
 // To close pop up of icon
