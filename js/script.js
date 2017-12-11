@@ -3,7 +3,6 @@ function iApp(iconData,menuData) {
   this.secondPanel = document.getElementById('secondPanel');
   this.menuPanel = document.getElementById('menuPanel');
   this.bakground = document.getElementById('container');
-
   // To get all main icons data from js file
   this.icons = iconData;
   this.menues = menuData;
@@ -17,21 +16,17 @@ function iApp(iconData,menuData) {
         if(i < 20){
             firstPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
             firstPanelData += 'width="52px" height="52px" /></div><div><span>'+ this.icons[i].name +'</span></div>';
-          
             // Uncomment to view Edit and Delete feature
             // firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
             // firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
-
             firstPanelData += '</div>';
             document.getElementsByClassName("nav_row")[0].style.display = "none";
         }else {
-            // data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
             secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
             secondPanelData += ' width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div>';
             // Uncomment to view Edit and Delete feature
             // secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
             // secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
-
             secondPanelData += '</div>';
             document.getElementsByClassName("nav_row")[0].style.display = "block";
         }
@@ -39,10 +34,11 @@ function iApp(iconData,menuData) {
     }
     if(this.menues.length > 0){
        for (i = 0; i < this.menues.length; i++) {
-        menuPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.menues[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.menues[i].name +'</span></div></div>';
+        menuPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div>';
+        menuPanelData += '<img src=' + this.menues[i].link + ' class="imagTag" width="52px" height="52px" /></div>';
+        menuPanelData += '<div><span>'+ this.menues[i].name +'</span></div></div>';
       }
     }
-    //this.Count(this.icons.length);
     return this.firstPanel.innerHTML = firstPanelData,this.secondPanel.innerHTML = secondPanelData, this.menuPanel.innerHTML = menuPanelData ;
   };
 
@@ -53,7 +49,7 @@ function iApp(iconData,menuData) {
     var icnName = elNam.value;
     var icnLink = elLink.value;
     if (icnName && icnLink) {
-       document.getElementById("addErrorMsg").style.display = "none";
+      document.getElementById("addErrorMsg").style.display = "none";
       this.icons.push({"name":icnName.trim(),link:icnLink.trim()});
       elNam.value = '';
       elLink.value = '';
@@ -68,7 +64,8 @@ function iApp(iconData,menuData) {
     document.getElementById('iconPopupPanel').style.display = 'block';
     this.popDiv = document.getElementById("popIcon");
     var popData = '';
-    popData += '<div><img src=' + this.menues[index].link + ' class="imagTag" width="52px" height="52px" />'+'<div>'+this.menues[index].name+'</span></div>';
+    popData += '<div><img src=' + this.menues[index].link + ' class="imagTag" width="52px" height="52px" />';
+    popData += '<div>'+this.menues[index].name+'</span></div>';
     return this.popDiv.innerHTML = popData;
   };
 
@@ -84,13 +81,10 @@ function iApp(iconData,menuData) {
       var nam = elNam.value;
       var link = elLink.value;
       if (nam && link) {
-        //document.getElementById("backErrorMsg").style.display = "none";
         self.icons[index].name = nam.trim();
         self.icons[index].link = link.trim();
         self.CreateIcons();
         CloseInput();
-      } else {
-        
       }
     }
   };
@@ -101,6 +95,7 @@ function iApp(iconData,menuData) {
     this.CreateIcons();
   };
 
+  //To change background of devices
   this.ChangeBackground = function() {
     var el = document.getElementById('get-background');
     var elImg = el.value;
@@ -110,11 +105,9 @@ function iApp(iconData,menuData) {
     } else{
       document.getElementById("backErrorMsg").style.display = "block";
     }
-    
   } 
 }
 
-// To fetch data
 var app = new iApp(icons, menus);
 app.CreateIcons();
 
