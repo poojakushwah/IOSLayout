@@ -1,0 +1,365 @@
+body {
+    font-family: Verdana,sans-serif;
+    font-size: 0.9em;
+}
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+#iconPopupPanel {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    top: 0px;
+    left: 0px;
+}
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+    opacity: 0.4;
+}
+.blurryBackground {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.5;
+    -webkit-filter: blur(11px);
+    -moz-filter: blur(11px);
+    -o-filter: blur(11px);
+    -ms-filter: blur(11px);
+    filter: blur(11px);
+}
+#iconPopup {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    margin: auto;
+    z-index: 10;
+    bottom: 65%;
+    background-color: whitesmoke;
+}
+#popIcon {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    vertical-align: middle;
+}
+#close {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    font-weight: bold;
+    cursor: pointer;
+    background-image: url(../images/close.jpg);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+#mainContainer {
+    width: 1024px;
+    height: 768px;
+    background-image: url(../images/ipad-mini-horizontal.png);
+    background-size: 1024px 768px;
+    margin:auto;
+}
+#container {
+    position: relative;
+    margin:auto;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    width: 708px;
+    height: 471px;
+    top: 148px;
+    left: 0px; 
+    overflow: hidden;
+}
+#mainPanel {
+    width: 100%;
+    height: 74%;
+    position: relative;
+    padding: 20px 0px 0px 0px;
+}
+#bottomPanel {
+    width: 100%;
+    height: 18%;
+    position: relative;
+}
+#firstPanel div {
+    -moz-transition: transform 1s;
+    -webkit-transition: transform 1s;
+    transition: transform 1s;
+}
+#firstPanel{
+   display: block;
+}
+#secondPanel{
+   display: none;
+}
+.panel {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+.row {
+    width: 100%;
+    height: 100%;
+}
+.row .iconCont {
+    width: 141px;
+    height: 86px;
+    float: left;
+}
+.iconCont div:first-child {
+    position: relative;
+    text-align: center;
+}
+.iconCont div img {
+    width:52px;
+    height:52px;
+}
+.iconCont div:nth-child(2) {
+    position: relative;
+    color: #f0f0f0;
+    font-size: 12px;
+    text-align: center;
+}
+.iconCont div:nth-child(3) {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    top: -4px;
+}
+#navigation {
+    width: 100%;
+    height: 4%;
+    position: relative;
+}
+#menuPanel{
+    position: absolute;
+    top: 0px;
+    width:100%;
+    height :100%;
+}
+#menuPanel .iconCont{
+    width: 12%;
+    height: 83%;
+    float: left;
+    margin: 1% 6.5%;
+    cursor: pointer;
+}
+.nav_row {
+    width: 30px;
+    height: 10px;
+    position: relative;
+    text-align: center;
+    margin: auto;
+}
+#navigation .nav {
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 3px;
+    cursor: pointer;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+}
+#navigation .nav:first-child {
+    left: 0px;
+}
+#navigation .nav:last-child {
+    right: 0px;
+    opacity: 0.3;
+}
+input[type='submit'], button, [aria-label]{
+    cursor: pointer;
+    }
+#closeEdit{
+    display: none;
+}
+.iconCont button {
+    font-size: 8px
+}
+.error {
+    color : red;
+}
+#backErrorMsg {
+    display: none;
+}
+#addErrorMsg {
+    display: none;
+}
+/*Media query to support ipad and iphone*/
+/*@media screen and (max-width: 1600px) and (min-width: 1024px){
+    #mainContainer {
+        width: 1024px;
+        height: 768px;
+        background-image: url(../images/ipad-mini-horizontal.png);
+        background-size: 1024px 768px;
+    }
+}*/
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    #mainContainer {
+        width: 768px;
+        height: 1024px;
+        background-image: url(../images/ipad-mini-vertifical.png);
+        background-size: 768px 1024px;
+    }
+    #container{
+        width: 473px;
+        height: 708px;
+    }
+    #mainPanel {
+        height: 78%;
+    }
+    #bottomPanel {
+        height: 15%;
+    }
+    #iconPopup {
+        bottom: 62%;
+    }
+    .row .iconCont {
+        width: 118px;
+        height: 110px
+    }
+    .iconCont div img {
+        width:62px;
+        height:62px;
+    }
+    #menuPanel .iconCont {
+        width: 20%;
+        height: 81%;
+        margin: 3% 2.5%;
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 568px) {
+    #mainContainer {
+        width: 568px;
+        height: 320px;
+        background-image: url(../images/iphone5-horizontal.png);
+        background-size: 568px 320px;
+    }
+    #container{
+        width: 358px;
+        height: 205px;
+        top: 58px;;
+        top: 58px;
+        left:-1px;
+    }
+    #mainPanel {
+        width: 84%;
+        height: 89%;
+        padding: 10px 0px 0px 0px;
+    }
+    #bottomPanel {
+        width: 16%;
+        height: 100%;
+        float: right;
+        top: -205px;
+    }
+    .row .iconCont {
+        width: 60px;
+        height: 46px;
+    }
+    .iconCont div:first-child {
+        height: 65%;
+    }
+    .iconCont div img {
+        width:32px;
+        height:32px;
+    }
+    .iconCont div:nth-child(2) {
+        font-size: 9px;
+    }
+    #iconPopup {
+        width: 155px;
+        height: 100px;
+        bottom: 73%;
+    }
+    #navigation {
+        width: 75%;
+        height: 6%;
+    }
+    .nav_row {
+        width: 20px;
+        top:3px;
+    }
+    #navigation .nav {
+        width: 2px;
+        height: 2px;
+    }
+    #menuPanel .iconCont {
+        width: 82%;
+        height: 20%;
+        margin: 9%;
+    }
+    #menuPanel .iconCont div:first-child{
+        height: 74%;
+    }
+}
+
+@media screen and (max-width: 567px) and (min-width: 320px) {
+    #mainContainer {
+        width: 320px;
+        height: 567px;
+        background-image: url(../images/iphone5-vertical.png);
+        background-size: 320px 567px;
+    }
+    #container{
+        width: 204px;
+        height: 358px;
+        top: 103px;
+        left: 2px;
+    }
+    #mainPanel {
+        height: 77%;
+        padding: 10px 0px 0px 0px;
+    }
+    #bottomPanel {
+        height: 16%;
+    }
+    #iconPopup {
+        width: 155px;
+        height: 100px;
+    }
+    .nav_row {
+        width: 25px;
+    }
+    #navigation .nav {
+        padding: 4px;
+        width: 2px;
+        height: 2px;
+    }
+    .row .iconCont {
+        width: 51px;
+        height: 55px;
+    }
+    .iconCont div img {
+        width:32px;
+        height:32px;
+    }
+    .iconCont div:first-child {
+        height: 61%
+    }
+    .iconCont div:nth-child(2) {
+        font-size: 8px;
+    }
+    #menuPanel .iconCont {
+        width: 20%;
+        height: 81%;
+        margin: 3% 2.5%;
+    }
+    #menuPanel .iconCont div:first-child{
+        height: 73%;
+    }
+}

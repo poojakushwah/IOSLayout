@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IOS Layout</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="iconData.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+</head>
+<script>
+	$( init );
+ 	// For drag funtionlity
+	function init() {
+	  $('.iconCont').draggable( {
+	    containment: "#container",
+	    stack: '#bottomPanel div',
+	    cursor: 'move',
+	    revert: true
+	  } );
+	}
+</script>
+<body>
+<!--Uncomment below lines of code to Change background , add icons and edit icons-->
+<!-- <div class="practiceData">
+	<label>Please enter image url to change background</label>
+	<input type="text" value="./images/icons/Calculator.png" id="get-background">
+	<input type="submit" value="Update background" onclick="app.ChangeBackground()" />
+	<div id="backErrorMsg" class="error">Please enter valid image url</div>
+
+	<label>Please enter name and image url to add icons</label>
+	<form action="javascript:void(0);" method="POST" onsubmit="app.AddIcons()">
+		<input type="text" id="add-iconsName" value="CloudApp" placeholder="Add Name">
+		<input type="text" id="add-iconsLink" value="./images/icons/CloudApp.png" placeholder="Add Image Link">
+		<input type="submit" value="AddIcons">
+		<div id="addErrorMsg" class="error">Please enter name and valid image url</div>
+	</form>
+	
+	<div id="closeEdit" role="aria-hidden">
+		<form action="javascript:void(0);" method="POST" id="saveEditIcon">
+		    <input type="text" id="edit-name">
+		    <input type="text" id="edit-link">
+		    <input type="submit" value="EditIcons" /> <a
+		onclick="CloseInput()" aria-label="Close">&#10006;</a>
+	  	</form>
+	</div>
+</div> -->
+<div id="mainContainer">
+	<div id="container">
+        <div id="mainPanel">
+        	<div  id="firstPanel" class="panel row"></div>
+        	<div  id="secondPanel" class="panel row"></div>
+        </div>
+        <div id="iconPopupPanel">
+        	<div class="overlay"></div>
+	        <div id="iconPopup">
+        		<div id="close" onclick="ClosePopup();"></div>
+        		<div id="popIcon"></div>
+	        </div>
+        </div>
+        <div id="navigation">
+			<div class="nav_row">
+				<div id="firstNav" class="nav" onclick="openFirstScreen();"></div>
+				<div id="secNav" class="nav" onclick="openSecondScreen();"></div>
+			</div>
+		</div>
+		<div id="bottomPanel" class="panel">
+			<div class="blurryBackground"></div>
+			<div id="menuPanel"></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/script.js"></script>
+</div>
+</body>
+</html>
+
