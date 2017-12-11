@@ -19,8 +19,8 @@ function iApp(iconData,menuData) {
             firstPanelData += 'width="52px" height="52px" /></div><div><span>'+ this.icons[i].name +'</span></div>';
           
             // Uncomment to view Edit and Delete feature
-            firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
-            firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
+            // firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
+            // firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
 
             firstPanelData += '</div>';
             document.getElementsByClassName("nav_row")[0].style.display = "none";
@@ -29,8 +29,8 @@ function iApp(iconData,menuData) {
             secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
             secondPanelData += ' width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div>';
             // Uncomment to view Edit and Delete feature
-            secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
-            secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
+            // secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
+            // secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
 
             secondPanelData += '</div>';
             document.getElementsByClassName("nav_row")[0].style.display = "block";
@@ -125,7 +125,7 @@ function CloseInput() {
 
 // To close pop up of icon
 function ClosePopup() {
- document.getElementById('iconPopupPanel').style.display = 'none';
+  document.getElementById('iconPopupPanel').style.display = 'none';
 }
 
 // For first secreen
