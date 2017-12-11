@@ -1,131 +1,124 @@
-function iApp(iconData,menuData) {
-  this.firstPanel = document.getElementById('firstPanel');
-  this.secondPanel = document.getElementById('secondPanel');
-  this.menuPanel = document.getElementById('menuPanel');
-  this.bakground = document.getElementById('container');
+(function($) {
+  $.firstPanel = document.getElementById('firstPanel');
+  $.secondPanel = document.getElementById('secondPanel');
+  $.menuPanel = document.getElementById('menuPanel');
+  $.bakground = document.getElementById('container');
 
   // To get all main icons data from js file
-  this.icons = iconData;
-  this.menues = menuData;
+  $.icons = icons;
+  $.menues = menus;
+
   // To get icon data from user input
-  this.CreateIcons = function() {
+  $.CreateIcons = function() {
     var firstPanelData = '';
     var secondPanelData = '';
     var menuPanelData = '';
-    if (this.icons.length > 0) {
-      for (i = 0; i < this.icons.length; i++) {
+    if ($.icons.length > 0) {
+      for (i = 0; i < $.icons.length; i++) {
         if(i < 20){
-            firstPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
-            firstPanelData += 'width="52px" height="52px" /></div><div><span>'+ this.icons[i].name +'</span></div>';
-          
+            firstPanelData += '<div class="iconCont"><div><img src=' + $.icons[i].link + ' class="imagTag"';
+            firstPanelData += 'width="52px" height="52px"/></div><div><span>'+ $.icons[i].name +'</span></div>';
             // Uncomment to view Edit and Delete feature
-            // firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
-            // firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
-
+            // firstPanelData += '<div><span><button onclick="$.EditIcons(' + i + ')">Edit</button></span>';
+            // firstPanelData += '<span><button onclick="$.DeleteIcons('+ i + ')">Delete</button></span></div>';
             firstPanelData += '</div>';
             document.getElementsByClassName("nav_row")[0].style.display = "none";
         }else {
-            // data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
-            secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
-            secondPanelData += ' width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div>';
+            secondPanelData += '<div class="iconCont"><div><img src='+ $.icons[i].link + ' class="imagTag"';
+            secondPanelData += ' width="52px" height="52px"/></div>'+'<div><span>'+ $.icons[i].name +'</span></div>';
             // Uncomment to view Edit and Delete feature
-            // secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
-            // secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
-
+            // secondPanelData += '<div><span><button onclick="$.EditIcons(' + i + ')">Edit</button></span>';
+            // secondPanelData += '<span><button onclick="$.DeleteIcons('+ i + ')">Delete</button></span></div>';
             secondPanelData += '</div>';
             document.getElementsByClassName("nav_row")[0].style.display = "block";
         }
       }
     }
-    if(this.menues.length > 0){
-       for (i = 0; i < this.menues.length; i++) {
-        menuPanelData += '<div class="iconCont" onclick="app.ShowPopUP(' + i + ') "><div><img src=' + this.menues[i].link + ' class="imagTag" width="52px" height="52px" /></div>'+'<div><span>'+ this.menues[i].name +'</span></div></div>';
+    if($.menues.length > 0){
+       for (i = 0; i < $.menues.length; i++) {
+        menuPanelData += '<div class="iconCont" onclick="$.ShowPopUP('+ i + ') "><div>';
+        menuPanelData += '<img src=' + $.menues[i].link + ' class="imagTag" width="52px" height="52px" /></div>';
+        menuPanelData += '<div><span>'+ $.menues[i].name +'</span></div></div>';
       }
     }
-    //this.Count(this.icons.length);
-    return this.firstPanel.innerHTML = firstPanelData,this.secondPanel.innerHTML = secondPanelData, this.menuPanel.innerHTML = menuPanelData ;
+    return $.firstPanel.innerHTML =firstPanelData,$.secondPanel.innerHTML = secondPanelData,$.menuPanel.innerHTML = menuPanelData ;
   };
 
   // To add icon from user input
-  this.AddIcons = function () {
+  $.AddIcons = function () {
     elNam = document.getElementById('add-iconsName');
     elLink = document.getElementById('add-iconsLink');
     var icnName = elNam.value;
     var icnLink = elLink.value;
     if (icnName && icnLink) {
-       document.getElementById("addErrorMsg").style.display = "none";
-      this.icons.push({"name":icnName.trim(),link:icnLink.trim()});
+      document.getElementById("addErrorMsg").style.display = "none";
+      $.icons.push({"name":icnName.trim(),link:icnLink.trim()});
       elNam.value = '';
       elLink.value = '';
-      this.CreateIcons();
+      $.CreateIcons();
     } else {
       document.getElementById("addErrorMsg").style.display = "block";
     }
   };
 
   // To show icon in pop up
-  this.ShowPopUP = function(index){
+  $.ShowPopUP = function(index){
     document.getElementById('iconPopupPanel').style.display = 'block';
-    this.popDiv = document.getElementById("popIcon");
+    $.popDiv = document.getElementById("popIcon");
     var popData = '';
-    popData += '<div><img src=' + this.menues[index].link + ' class="imagTag" width="52px" height="52px" />'+'<div>'+this.menues[index].name+'</span></div>';
-    return this.popDiv.innerHTML = popData;
+    popData += '<div><img src=' + $.menues[index].link + ' class="imagTag" width="52px" height="52px"/>';
+    popData += '<div>'+$.menues[index].name+'</span></div>';
+    return $.popDiv.innerHTML = popData;
   };
 
   // To Edit icon name and image link with proper path
-  this.EditIcons = function (index) {
+   $.EditIcons = function (index) {
     var elNam = document.getElementById('edit-name');
     var elLink = document.getElementById('edit-link');
-    elNam.value = this.icons[index].name;
-    elLink.value = this.icons[index].link;
+    elNam.value = $.icons[index].name;
+    elLink.value = $.icons[index].link;
     document.getElementById('closeEdit').style.display = 'block';
-    self = this;
+    self = $;
     document.getElementById('saveEditIcon').onsubmit = function() {
       var nam = elNam.value;
       var link = elLink.value;
       if (nam && link) {
-        //document.getElementById("backErrorMsg").style.display = "none";
         self.icons[index].name = nam.trim();
         self.icons[index].link = link.trim();
         self.CreateIcons();
         CloseInput();
-      } else {
-        
       }
     }
   };
 
   //To delete icons
-  this.DeleteIcons = function (index) {
-    this.icons.splice(index, 1);
-    this.CreateIcons();
+  $.DeleteIcons = function (index) {
+    $.icons.splice(index, 1);
+    $.CreateIcons();
   };
 
-  this.ChangeBackground = function() {
+  $.ChangeBackground = function() {
     var el = document.getElementById('get-background');
     var elImg = el.value;
-    if( elImg ){
+    if( elImg ) {
       document.getElementById("backErrorMsg").style.display = "none";
-      this.bakground.style.backgroundImage = 'url('+ elImg + ')';
-    } else{
+    }else {
       document.getElementById("backErrorMsg").style.display = "block";
     }
-    
-  } 
-}
+    $.bakground.style.backgroundImage = 'url('+ elImg + ')';
+  }
+//}
+$.CreateIcons(icons,menus);
+})(jQuery);
 
-// To fetch data
-var app = new iApp(icons, menus);
-app.CreateIcons();
-
-// To close Edit inputs 
+// To close Edit inputs
 function CloseInput() {
   document.getElementById('closeEdit').style.display = 'none';
 }
 
 // To close pop up of icon
 function ClosePopup() {
-  document.getElementById('iconPopupPanel').style.display = 'none';
+ document.getElementById('iconPopupPanel').style.display = 'none';
 }
 
 // For first secreen
@@ -136,7 +129,6 @@ function openFirstScreen() {
   document.getElementById('secNav').style.pointerEvents = "auto";
   document.getElementById('secNav').style.opacity = 0.3;
   document.getElementById('firstNav').style.opacity = 1;
-
 }
 
 // For second screen
