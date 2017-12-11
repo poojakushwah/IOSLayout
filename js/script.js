@@ -1,16 +1,14 @@
-var app = new function(iconData,menuData) {
-
+function iApp(iconData,menuData) {
   this.firstPanel = document.getElementById('firstPanel');
   this.secondPanel = document.getElementById('secondPanel');
   this.menuPanel = document.getElementById('menuPanel');
   this.bakground = document.getElementById('container');
 
   // To get all main icons data from js file
-  this.icons = icons;
-  this.menues = menus;
-
+  this.icons = iconData;
+  this.menues = menuData;
   // To get icon data from user input
-  this.GetData = function() {
+  this.CreateIcons = function() {
     var firstPanelData = '';
     var secondPanelData = '';
     var menuPanelData = '';
@@ -21,19 +19,21 @@ var app = new function(iconData,menuData) {
             firstPanelData += 'width="52px" height="52px" /></div><div><span>'+ this.icons[i].name +'</span></div>';
           
             // Uncomment to view Edit and Delete feature
-            // firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
-            // firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
+            firstPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
+            firstPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
 
             firstPanelData += '</div>';
+            document.getElementsByClassName("nav_row")[0].style.display = "none";
         }else {
             // data += '<div><img src='+this.icons[i]+'width="52px" height="52px />';
             secondPanelData += '<div class="iconCont"><div><img src=' + this.icons[i].link + ' class="imagTag"';
             secondPanelData += ' width="52px" height="52px" /></div>'+'<div><span>'+ this.icons[i].name +'</span></div>';
             // Uncomment to view Edit and Delete feature
-            // secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
-            // secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
+            secondPanelData += '<div><span><button onclick="app.EditIcons(' + i + ')">Edit</button></span>';
+            secondPanelData += '<span><button onclick="app.DeleteIcons(' + i + ')">Delete</button></span></div>';
 
             secondPanelData += '</div>';
+            document.getElementsByClassName("nav_row")[0].style.display = "block";
         }
       }
     }
@@ -53,11 +53,13 @@ var app = new function(iconData,menuData) {
     var icnName = elNam.value;
     var icnLink = elLink.value;
     if (icnName && icnLink) {
+       document.getElementById("addErrorMsg").style.display = "none";
       this.icons.push({"name":icnName.trim(),link:icnLink.trim()});
-      console.log(this.icons)
       elNam.value = '';
       elLink.value = '';
-      this.GetData();
+      this.CreateIcons();
+    } else {
+      document.getElementById("addErrorMsg").style.display = "block";
     }
   };
 
@@ -82,10 +84,13 @@ var app = new function(iconData,menuData) {
       var nam = elNam.value;
       var link = elLink.value;
       if (nam && link) {
+        //document.getElementById("backErrorMsg").style.display = "none";
         self.icons[index].name = nam.trim();
         self.icons[index].link = link.trim();
-        self.GetData();
+        self.CreateIcons();
         CloseInput();
+      } else {
+        
       }
     }
   };
@@ -93,19 +98,25 @@ var app = new function(iconData,menuData) {
   //To delete icons
   this.DeleteIcons = function (index) {
     this.icons.splice(index, 1);
-    this.GetData();
+    this.CreateIcons();
   };
 
   this.ChangeBackground = function() {
     var el = document.getElementById('get-background');
     var elImg = el.value;
-    this.bakground.style.backgroundImage = 'url('+ elImg + ')';
+    if( elImg ){
+      document.getElementById("backErrorMsg").style.display = "none";
+      this.bakground.style.backgroundImage = 'url('+ elImg + ')';
+    } else{
+      document.getElementById("backErrorMsg").style.display = "block";
+    }
     
   } 
 }
 
 // To fetch data
-app.GetData(iconData, menuData);
+var app = new iApp(icons, menus);
+app.CreateIcons();
 
 // To close Edit inputs 
 function CloseInput() {

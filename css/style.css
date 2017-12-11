@@ -2,6 +2,13 @@ body {
     font-family: Verdana,sans-serif;
     font-size: 0.9em;
 }
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
 #iconPopupPanel {
     position: absolute;
     display: none;
@@ -181,7 +188,15 @@ input[type='submit'], button, [aria-label]{
 .iconCont button {
     font-size: 8px
 }
-
+.error {
+    color : red;
+}
+#backErrorMsg {
+    display: none;
+}
+#addErrorMsg {
+    display: none;
+}
 /*Media query to support ipad and iphone*/
 /*@media screen and (max-width: 1600px) and (min-width: 1024px){
     #mainContainer {
